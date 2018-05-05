@@ -9,8 +9,7 @@ import sampleData from '../utils/samples';
 class App extends Component {
   state = {
     dishes: {},
-    order: {},
-    load: false
+    order: {}
   };
 
   addDish = dish => {
@@ -20,7 +19,17 @@ class App extends Component {
   };
 
   loadSampleDishes = () => {
-    this.setState({ dishes: sampleData, load: true });
+    this.setState({ dishes: sampleData });
+  };
+
+  addToCard = name => {
+    !this.state.order[name]
+      ? this.setState(prevState => ({
+          order: { ...prevState.order, [name]: 1 }
+        }))
+      : this.setState(prevState => ({
+          order: { ...prevState.order, [name]: prevState.order[name] + 1 }
+        }));
   };
 
   render() {
@@ -30,7 +39,13 @@ class App extends Component {
           <Header tagline="Fresh Market!" title="Dish of the day" />
           <ul className="dishes">
             {Object.keys(this.state.dishes).map(dish => {
-              return <Dish key={dish} {...this.state.dishes[dish]} />;
+              return (
+                <Dish
+                  key={dish}
+                  {...this.state.dishes[dish]}
+                  addToCard={this.addToCard}
+                />
+              );
             })}
           </ul>
         </div>
