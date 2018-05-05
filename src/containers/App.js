@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import StorePicker from '../components/StorePicker';
 import Header from '../components/Header';
 import Order from '../components/Order';
 import Inventory from '../components/Inventory';
