@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Order from '../components/Order';
 import Inventory from '../components/Inventory';
+import Dish from '../components/Dish';
 import sampleData from '../utils/samples';
 
 class App extends Component {
   state = {
     dishes: {},
-    order: {}
+    order: {},
+    load: false
   };
 
   addDish = dish => {
@@ -18,7 +20,7 @@ class App extends Component {
   };
 
   loadSampleDishes = () => {
-    this.setState({ dishes: sampleData });
+    this.setState({ dishes: sampleData, load: true });
   };
 
   render() {
@@ -26,6 +28,11 @@ class App extends Component {
       <div className="dish-of-the-day">
         <div className="menu">
           <Header tagline="Fresh Market!" title="Dish of the day" />
+          <ul className="dishes">
+            {Object.keys(this.state.dishes).map(dish => {
+              return <Dish key={dish} {...this.state.dishes[dish]} />;
+            })}
+          </ul>
         </div>
         <Order />
         <Inventory addDish={this.addDish} loadSamples={this.loadSampleDishes} />
