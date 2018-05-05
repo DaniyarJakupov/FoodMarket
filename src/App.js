@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="dish-of-the-day">
         <div className="menu">
-          <Header />
+          <Header tagline="Fresh Daily!" title="Dish of the day" />
         </div>
         <Order />
         <Inventory />
