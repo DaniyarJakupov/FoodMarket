@@ -5,6 +5,17 @@ import Order from '../components/Order';
 import Inventory from '../components/Inventory';
 
 class App extends Component {
+  state = {
+    dishes: {},
+    order: {}
+  };
+
+  addDish = dish => {
+    this.setState(prevState => ({
+      dishes: { ...prevState.dishes, [`Dish${Date.now()}`]: dish }
+    }));
+  };
+
   render() {
     return (
       <div className="dish-of-the-day">
@@ -12,7 +23,7 @@ class App extends Component {
           <Header tagline="Fresh Market!" title="Dish of the day" />
         </div>
         <Order />
-        <Inventory />
+        <Inventory addDish={this.addDish} />
       </div>
     );
   }
