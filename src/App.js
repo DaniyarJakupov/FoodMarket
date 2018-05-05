@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 
 import StorePicker from './components/StorePicker';
+import Header from './components/Header';
+import Order from './components/Order';
+import Inventory from './components/Inventory';
 
 class App extends Component {
   render() {
     return (
-      <StorePicker />
+      <div className="dish-of-the-day">
+        <div className="menu">
+          <Header />
+        </div>
+        <Order />
+        <Inventory />
+      </div>
     );
   }
 }
