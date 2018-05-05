@@ -2,6 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import './css/style.css';
 
-import App from './App';
+import Router from './Router';
 
-render(<App />, document.getElementById('root'));
+render(<Router />, document.getElementById('root'));
