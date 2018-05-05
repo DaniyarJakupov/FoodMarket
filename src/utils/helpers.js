@@ -53,14 +53,18 @@ export function getFunName() {
   ];
 
   const nouns = [
-    'people',
+    'broccoli',
+    'cabbage',
     'leaves',
     'geese',
     'knives',
     'elves',
     'loaves',
     'potatoes',
-    'tomatoes'
+    'tomatoes',
+    'onions',
+    'chicken',
+    'beef'
   ];
 
   return `${rando(adjectives)}-${rando(adjectives)}-${rando(nouns)}`;
