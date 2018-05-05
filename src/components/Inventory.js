@@ -9,6 +9,8 @@ class Inventory extends Component {
         <h2>Inventory</h2>
 
         <NewDishForm addDish={this.props.addDish} />
+
+        <button onClick={this.props.loadSamples}>Load Sample Dishes</button>
       </div>
     );
   }

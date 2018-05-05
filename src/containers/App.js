@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Order from '../components/Order';
 import Inventory from '../components/Inventory';
+import sampleData from '../utils/samples';
 
 class App extends Component {
   state = {
@@ -16,6 +17,10 @@ class App extends Component {
     }));
   };
 
+  loadSampleDishes = () => {
+    this.setState({ dishes: sampleData });
+  };
+
   render() {
     return (
       <div className="dish-of-the-day">
@@ -23,7 +28,7 @@ class App extends Component {
           <Header tagline="Fresh Market!" title="Dish of the day" />
         </div>
         <Order />
-        <Inventory addDish={this.addDish} />
+        <Inventory addDish={this.addDish} loadSamples={this.loadSampleDishes} />
       </div>
     );
   }
