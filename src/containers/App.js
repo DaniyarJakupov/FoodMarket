@@ -11,7 +11,7 @@ import base from '../utils/base';
 class App extends Component {
   state = {
     dishes: {},
-    cart: {}
+    order: {}
   };
   /* === Lifecycle methods === */
   componentDidMount() {
@@ -20,21 +20,21 @@ class App extends Component {
       context: this,
       state: 'dishes'
     });
-    // Grab cart data from localStorage
+    // Grab order data from localStorage
     const localStorageRef = localStorage.getItem(
       this.props.match.params.storeId
     );
     localStorageRef &&
       this.setState({
-        cart: { ...JSON.parse(localStorageRef) }
+        order: { ...JSON.parse(localStorageRef) }
       });
   }
 
   componentDidUpdate() {
-    // Update cart in localStorage
+    // Update order in localStorage
     localStorage.setItem(
       this.props.match.params.storeId,
-      JSON.stringify(this.state.cart)
+      JSON.stringify(this.state.order)
     );
   }
 
@@ -42,16 +42,17 @@ class App extends Component {
     base.removeBinding(this.ref);
   }
   /* ================================================================= */
-  /* === Cart methods === */
-  addToCart = key => {
-    !this.state.cart[key]
+  /* === order methods === */
+  addToOrder = key => {
+    !this.state.order[key]
       ? this.setState(prevState => ({
-          cart: { ...prevState.cart, [key]: 1 }
+          order: { ...prevState.order, [key]: 1 }
         }))
       : this.setState(prevState => ({
-          cart: { ...prevState.cart, [key]: prevState.cart[key] + 1 }
+          order: { ...prevState.order, [key]: prevState.order[key] + 1 }
         }));
   };
+
   /* ================================================================= */
   /* === Inventory methods === */
   addDish = dish => {
@@ -89,14 +90,18 @@ class App extends Component {
                   key={dish}
                   id={dish}
                   {...this.state.dishes[dish]}
-                  addToCart={this.addToCart}
+                  addToOrder={this.addToOrder}
                 />
               );
             })}
           </ul>
         </div>
 
-        <Order dishes={this.state.dishes} cart={this.state.cart} />
+        <Order
+          dishes={this.state.dishes}
+          order={this.state.order}
+          delete={this.deleteFromOrder}
+        />
 
         <Inventory
           addDish={this.addDish}

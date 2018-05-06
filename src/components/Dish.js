@@ -2,7 +2,7 @@ import React from 'react';
 
 import { formatPrice } from '../utils/helpers';
 
-const Dish = ({ name, image, desc, price, status, addToCart, id }) => {
+const Dish = ({ name, image, desc, price, status, addToOrder, id }) => {
   const available = status === 'available';
 
   return (
@@ -14,7 +14,7 @@ const Dish = ({ name, image, desc, price, status, addToCart, id }) => {
       </h3>
       <p>{desc}</p>
 
-      <button disabled={!available} onClick={() => addToCart(id)}>
+      <button disabled={!available} onClick={() => addToOrder(id)}>
         {available ? 'Add to Order' : 'Sold Out'}
       </button>
     </li>
