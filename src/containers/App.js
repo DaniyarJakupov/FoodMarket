@@ -15,10 +15,28 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // Sync and get dishes from firebase
     this.ref = base.syncState(`${this.props.match.params.storeId}/dishes`, {
       context: this,
       state: 'dishes'
     });
+
+    // Grab cart data from localStorage
+    const localStorageRef = localStorage.getItem(
+      this.props.match.params.storeId
+    );
+    localStorageRef &&
+      this.setState({
+        cart: { ...JSON.parse(localStorageRef) }
+      });
+  }
+
+  componentDidUpdate() {
+    // Update cart in localStorage
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.cart)
+    );
   }
 
   componentWillUnmount() {
@@ -63,7 +81,9 @@ class App extends Component {
             })}
           </ul>
         </div>
+
         <Order dishes={this.state.dishes} cart={this.state.cart} />
+
         <Inventory addDish={this.addDish} loadSamples={this.loadSampleDishes} />
       </div>
     );
