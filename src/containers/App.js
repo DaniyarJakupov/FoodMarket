@@ -66,6 +66,12 @@ class App extends Component {
     }));
   };
 
+  deleteDish = key => {
+    this.setState(prevState => ({
+      dishes: { ...prevState.dishes, [key]: null }
+    }));
+  };
+
   loadSampleDishes = () => {
     this.setState({ dishes: sampleData });
   };
@@ -95,6 +101,7 @@ class App extends Component {
         <Inventory
           addDish={this.addDish}
           updateDish={this.updateDish}
+          deleteDish={this.deleteDish}
           loadSamples={this.loadSampleDishes}
           dishes={this.state.dishes}
         />
