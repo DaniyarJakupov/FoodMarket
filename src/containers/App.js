@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../components/Header';
 import Order from '../components/Order';
@@ -9,6 +10,10 @@ import sampleData from '../utils/samples';
 import base from '../utils/base';
 
 class App extends Component {
+  static propTypes = {
+    match: PropTypes.object
+  };
+
   state = {
     dishes: {},
     order: {}

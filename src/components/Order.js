@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
 import { formatPrice } from '../utils/helpers';
 
 class Order extends Component {
+  static propTypes = {
+    order: PropTypes.object.isRequired,
+    delete: PropTypes.func.isRequired,
+    dishes: PropTypes.object.isRequired
+  };
+
   calculateTotal = () => {
     // [dish1, dish2, dish3, ...]
     const orderName = Object.keys(this.props.order);

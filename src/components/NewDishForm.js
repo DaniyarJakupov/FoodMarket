@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const INIT_STATE = {
   name: '',
@@ -9,6 +10,10 @@ const INIT_STATE = {
 };
 
 class NewDishForm extends Component {
+  static propTypes = {
+    addDish: PropTypes.func.isRequired
+  };
+
   state = {
     ...INIT_STATE
   };

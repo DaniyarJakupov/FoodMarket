@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class EditDishForm extends Component {
+  static propTypes = {
+    dish: PropTypes.shape({
+      name: PropTypes.string,
+      image: PropTypes.string,
+      desc: PropTypes.string,
+      price: PropTypes.number,
+      status: PropTypes.string
+    }).isRequired,
+    id: PropTypes.string.isRequired,
+    updateDish: PropTypes.func.isRequired,
+    deleteDish: PropTypes.func.isRequired
+  };
+
   onInputChange = e => {
     const updatedDish = { ...this.props.dish, [e.target.name]: e.target.value };
     this.props.updateDish(this.props.id, updatedDish);

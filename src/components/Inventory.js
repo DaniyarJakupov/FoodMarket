@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import NewDishForm from './NewDishForm';
 import EditDishForm from './EditDishForm';
 
@@ -29,6 +31,14 @@ const Inventory = ({
       <button onClick={loadSamples}>Load Sample Dishes</button>
     </div>
   );
+};
+
+Inventory.propTypes = {
+  dishes: PropTypes.object.isRequired,
+  updateDish: PropTypes.func.isRequired,
+  deleteDish: PropTypes.func.isRequired,
+  addDish: PropTypes.func.isRequired,
+  loadSamples: PropTypes.func.isRequired
 };
 
 export default Inventory;

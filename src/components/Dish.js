@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { formatPrice } from '../utils/helpers';
 
@@ -19,6 +20,16 @@ const Dish = ({ name, image, desc, price, status, addToOrder, id }) => {
       </button>
     </li>
   );
+};
+
+Dish.propTypes = {
+  name: PropTypes.string,
+  image: PropTypes.string,
+  desc: PropTypes.string,
+  price: PropTypes.number,
+  status: PropTypes.string,
+  addToOrder: PropTypes.func,
+  id: PropTypes.string
 };
 
 export default Dish;
