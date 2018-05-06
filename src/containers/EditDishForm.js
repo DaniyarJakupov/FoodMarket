@@ -7,6 +7,7 @@ class EditDishForm extends Component {
   };
 
   render() {
+    if (!this.props.dish) return null;
     const { name, image, price, status, desc } = this.props.dish;
     return (
       <div className="dish-edit">
@@ -44,6 +45,10 @@ class EditDishForm extends Component {
           onChange={this.onInputChange}
           value={image}
         />
+
+        <button onClick={() => this.props.deleteDish(this.props.id)}>
+          Remove dish
+        </button>
       </div>
     );
   }

@@ -16,6 +16,7 @@ class Inventory extends Component {
               key={key}
               id={key}
               updateDish={this.props.updateDish}
+              deleteDish={this.props.deleteDish}
             />
           );
         })}
