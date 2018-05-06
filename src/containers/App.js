@@ -49,6 +49,12 @@ class App extends Component {
     }));
   };
 
+  updateDish = (key, updatedDish) => {
+    this.setState(prevState => ({
+      dishes: { ...prevState.dishes, [key]: updatedDish }
+    }));
+  };
+
   loadSampleDishes = () => {
     this.setState({ dishes: sampleData });
   };
@@ -84,7 +90,12 @@ class App extends Component {
 
         <Order dishes={this.state.dishes} cart={this.state.cart} />
 
-        <Inventory addDish={this.addDish} loadSamples={this.loadSampleDishes} />
+        <Inventory
+          addDish={this.addDish}
+          updateDish={this.updateDish}
+          loadSamples={this.loadSampleDishes}
+          dishes={this.state.dishes}
+        />
       </div>
     );
   }

@@ -22,11 +22,9 @@ class NewDishForm extends Component {
   };
 
   onInputChange = e => {
-    e.target.name === 'price'
-      ? this.setState({ price: parseFloat(e.target.value) })
-      : this.setState({
-          [e.target.name]: e.target.value
-        });
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   render() {
