@@ -9,7 +9,7 @@ import sampleData from '../utils/samples';
 class App extends Component {
   state = {
     dishes: {},
-    order: {}
+    cart: {}
   };
 
   addDish = dish => {
@@ -22,13 +22,13 @@ class App extends Component {
     this.setState({ dishes: sampleData });
   };
 
-  addToCard = name => {
-    !this.state.order[name]
+  addToCart = name => {
+    !this.state.cart[name]
       ? this.setState(prevState => ({
-          order: { ...prevState.order, [name]: 1 }
+          cart: { ...prevState.cart, [name]: 1 }
         }))
       : this.setState(prevState => ({
-          order: { ...prevState.order, [name]: prevState.order[name] + 1 }
+          cart: { ...prevState.cart, [name]: prevState.cart[name] + 1 }
         }));
   };
 
@@ -42,14 +42,15 @@ class App extends Component {
               return (
                 <Dish
                   key={dish}
+                  id={dish}
                   {...this.state.dishes[dish]}
-                  addToCard={this.addToCard}
+                  addToCart={this.addToCart}
                 />
               );
             })}
           </ul>
         </div>
-        <Order />
+        <Order dishes={this.state.dishes} cart={this.state.cart} />
         <Inventory addDish={this.addDish} loadSamples={this.loadSampleDishes} />
       </div>
     );
