@@ -26,7 +26,9 @@ class Order extends Component {
     return Object.keys(this.props.cart).map(order => {
       const dish = this.props.dishes[order];
       const numberOfOrders = this.props.cart[order];
-      if (dish.status === 'available') {
+      const isAvailable = dish && dish.status === 'available';
+      if (!dish) return null;
+      if (isAvailable) {
         return (
           <li key={dish.name}>
             {numberOfOrders}x{dish.name}:{' '}
