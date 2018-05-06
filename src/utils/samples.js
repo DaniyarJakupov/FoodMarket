@@ -1,5 +1,5 @@
 const dishes = {
-  fish1: {
+  dish1: {
     name: 'Pacific Halibut',
     image: '/images/hali.jpg',
     desc:
@@ -8,7 +8,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish2: {
+  dish2: {
     name: 'Lobster',
     image: '/images/lobster.jpg',
     desc:
@@ -17,7 +17,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish3: {
+  dish3: {
     name: 'Sea Scallops',
     image: '/images/scallops.jpg',
     desc:
@@ -26,7 +26,7 @@ const dishes = {
     status: 'unavailable'
   },
 
-  fish4: {
+  dish4: {
     name: 'Mahi Mahi',
     image: '/images/mahi.jpg',
     desc:
@@ -35,7 +35,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish5: {
+  dish5: {
     name: 'King Crab',
     image: '/images/crab.jpg',
     desc:
@@ -44,7 +44,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish6: {
+  dish6: {
     name: 'Atlantic Salmon',
     image: '/images/salmon.jpg',
     desc:
@@ -53,7 +53,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish7: {
+  dish7: {
     name: 'Oysters',
     image: '/images/oysters.jpg',
     desc: 'A soft plump oyster with a sweet salty flavor and a clean finish.',
@@ -61,7 +61,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish8: {
+  dish8: {
     name: 'Mussels',
     image: '/images/mussels.jpg',
     desc:
@@ -70,7 +70,7 @@ const dishes = {
     status: 'available'
   },
 
-  fish9: {
+  dish9: {
     name: 'Jumbo Prawns',
     image: '/images/prawns.jpg',
     desc:
