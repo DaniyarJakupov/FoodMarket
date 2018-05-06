@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewDishForm from './NewDishForm';
+import NewDishForm from '../containers/NewDishForm';
 
 class Inventory extends Component {
   state = {};
