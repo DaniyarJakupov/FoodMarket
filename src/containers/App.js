@@ -13,14 +13,13 @@ class App extends Component {
     dishes: {},
     cart: {}
   };
-
+  /* === Lifecycle methods === */
   componentDidMount() {
     // Sync and get dishes from firebase
     this.ref = base.syncState(`${this.props.match.params.storeId}/dishes`, {
       context: this,
       state: 'dishes'
     });
-
     // Grab cart data from localStorage
     const localStorageRef = localStorage.getItem(
       this.props.match.params.storeId
@@ -42,7 +41,19 @@ class App extends Component {
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
-
+  /* ================================================================= */
+  /* === Cart methods === */
+  addToCart = key => {
+    !this.state.cart[key]
+      ? this.setState(prevState => ({
+          cart: { ...prevState.cart, [key]: 1 }
+        }))
+      : this.setState(prevState => ({
+          cart: { ...prevState.cart, [key]: prevState.cart[key] + 1 }
+        }));
+  };
+  /* ================================================================= */
+  /* === Inventory methods === */
   addDish = dish => {
     this.setState(prevState => ({
       dishes: { ...prevState.dishes, [`Dish${Date.now()}`]: dish }
@@ -58,16 +69,7 @@ class App extends Component {
   loadSampleDishes = () => {
     this.setState({ dishes: sampleData });
   };
-
-  addToCart = name => {
-    !this.state.cart[name]
-      ? this.setState(prevState => ({
-          cart: { ...prevState.cart, [name]: 1 }
-        }))
-      : this.setState(prevState => ({
-          cart: { ...prevState.cart, [name]: prevState.cart[name] + 1 }
-        }));
-  };
+  /* ================================================================= */
 
   render() {
     return (
