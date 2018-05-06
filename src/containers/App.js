@@ -6,11 +6,24 @@ import Inventory from '../components/Inventory';
 import Dish from '../components/Dish';
 import sampleData from '../utils/samples';
 
+import base from '../utils/base';
+
 class App extends Component {
   state = {
     dishes: {},
     cart: {}
   };
+
+  componentDidMount() {
+    this.ref = base.syncState(`${this.props.match.params.storeId}/dishes`, {
+      context: this,
+      state: 'dishes'
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   addDish = dish => {
     this.setState(prevState => ({
