@@ -35,17 +35,33 @@ class Order extends Component {
             timeout={{ enter: 250, exit: 250 }}
           >
             <li>
-              {numberOfOrders} x {dish.name}:{' '}
-              {formatPrice(numberOfOrders * dish.price)}
-              <button onClick={() => this.props.delete(order)}>Remove</button>
+              <span>
+                <TransitionGroup component="span" className="count">
+                  <CSSTransition
+                    classNames="count"
+                    key={numberOfOrders}
+                    timeout={{ enter: 250, exit: 250 }}
+                  >
+                    <span>{numberOfOrders}</span>
+                  </CSSTransition>
+                </TransitionGroup>{' '}
+                x {dish.name}: {formatPrice(numberOfOrders * dish.price)}
+                <button onClick={() => this.props.delete(order)}>Remove</button>
+              </span>
             </li>
           </CSSTransition>
         );
       }
       return (
-        <li key={dish.name}>
-          {dish ? dish.name : 'dish'} is no longer available
-        </li>
+        <CSSTransition
+          classNames="order"
+          key={dish.name}
+          timeout={{ enter: 250, exit: 250 }}
+        >
+          <li key={dish.name}>
+            {dish ? dish.name : 'dish'} is no longer available
+          </li>
+        </CSSTransition>
       );
     });
   };
