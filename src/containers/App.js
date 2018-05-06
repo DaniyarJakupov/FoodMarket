@@ -53,6 +53,11 @@ class App extends Component {
         }));
   };
 
+  deleteFromOrder = key => {
+    const order = { ...this.state.order };
+    delete order[key];
+    this.setState({ order });
+  };
   /* ================================================================= */
   /* === Inventory methods === */
   addDish = dish => {
