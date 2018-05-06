@@ -1,6 +1,6 @@
 import React from 'react';
-import NewDishForm from '../containers/NewDishForm';
-import EditDishForm from '../containers/EditDishForm';
+import NewDishForm from './NewDishForm';
+import EditDishForm from './EditDishForm';
 
 const Inventory = ({
   dishes,
