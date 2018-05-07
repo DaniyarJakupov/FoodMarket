@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Header from '../components/Header';
 import Order from '../components/Order';
-import Inventory from '../components/Inventory';
+import Inventory from './Inventory';
 import Dish from '../components/Dish';
 import sampleData from '../utils/samples';
 

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import { withRouter } from 'react-router-dom';
 
-import NewDishForm from './NewDishForm';
-import EditDishForm from './EditDishForm';
-import Login from './Login';
+import NewDishForm from '../components/NewDishForm';
+import EditDishForm from '../components/EditDishForm';
+import Login from '../components/Login';
 import base, { firebaseApp } from '../utils/base';
 
 class Inventory extends Component {
